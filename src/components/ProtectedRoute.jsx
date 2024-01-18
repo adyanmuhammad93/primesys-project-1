@@ -10,12 +10,17 @@ const ProtectedRoute = ({ children, roles }) => {
     return <Navigate to="/" replace />;
   }
 
-  // Check if the user's role is authorized
-  if (roles && roles.length && !roles.includes(user.user.role)) {
+  // Check if the user's role is authorized or if the user is an administrator
+  if (
+    roles &&
+    roles.length &&
+    !roles.includes(user.user.role) &&
+    user.user.role !== "administrator"
+  ) {
     return <Navigate to="/unauthorized" replace />;
   }
 
-  // If the user's role is authorized, render the children
+  // If the user's role is authorized or the user is an administrator, render the children
   return children;
 };
 

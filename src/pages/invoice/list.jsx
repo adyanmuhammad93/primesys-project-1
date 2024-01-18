@@ -57,7 +57,9 @@ const InvoiceList = () => {
           return (
             <div className="flex gap-4">
               {isAuthenticated &&
-                ["invoiceSupervisor"].includes(user.user.role) && (
+                ["administrator", "invoiceSupervisor"].includes(
+                  user.user.role
+                ) && (
                   <button
                     className="btn btn-xs btn-square"
                     onClick={() => handleEdit(row.original.salesinvid)}
@@ -67,7 +69,9 @@ const InvoiceList = () => {
                 )}
 
               {isAuthenticated &&
-                ["invoiceSupervisor"].includes(user.user.role) && (
+                ["administrator", "invoiceSupervisor"].includes(
+                  user.user.role
+                ) && (
                   <button
                     className="btn btn-xs btn-square"
                     onClick={() => handleDelete(row.original.salesinvid)}
@@ -77,9 +81,9 @@ const InvoiceList = () => {
                 )}
 
               {isAuthenticated &&
-                !["invoiceSupervisor"].includes(user.user.role) && (
-                  <p>No actions allowed.</p>
-                )}
+                !["administrator", "invoiceSupervisor"].includes(
+                  user.user.role
+                ) && <p>No actions allowed.</p>}
             </div>
           );
         },
@@ -110,7 +114,9 @@ const InvoiceList = () => {
           // 4
           showAddButton={
             isAuthenticated &&
-            ["invoiceEntry", "invoiceSupervisor"].includes(user.user.role)
+            ["administrator", "invoiceEntry", "invoiceSupervisor"].includes(
+              user.user.role
+            )
           }
           handleAddButton={handleAddButton}
           addButtonLabel="Add Invoice"

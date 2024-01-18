@@ -54,7 +54,7 @@ const Contact = () => {
         Cell: ({ row }) => (
           <div className="flex gap-4">
             {isAuthenticated &&
-              ["contactEntry", "contactSupervisor"].includes(
+              ["administrator", "contactEntry", "contactSupervisor"].includes(
                 user.user.role
               ) && (
                 <button
@@ -66,7 +66,7 @@ const Contact = () => {
               )}
 
             {isAuthenticated &&
-              ["contactEntry", "contactSupervisor"].includes(
+              ["administrator", "contactEntry", "contactSupervisor"].includes(
                 user.user.role
               ) && (
                 <button
@@ -78,7 +78,7 @@ const Contact = () => {
               )}
 
             {isAuthenticated &&
-              !["contactEntry", "contactSupervisor"].includes(
+              !["administrator", "contactEntry", "contactSupervisor"].includes(
                 user.user.role
               ) && <p>No actions allowed.</p>}
           </div>
@@ -118,7 +118,9 @@ const Contact = () => {
           // 4
           showAddButton={
             isAuthenticated &&
-            ["contactEntry", "contactSupervisor"].includes(user.user.role)
+            ["administrator", "contactEntry", "contactSupervisor"].includes(
+              user.user.role
+            )
           }
           handleAddButton={() =>
             document.getElementById("addContact").showModal()

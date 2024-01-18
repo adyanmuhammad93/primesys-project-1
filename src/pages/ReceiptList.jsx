@@ -105,7 +105,7 @@ const ReceiptList = () => {
         Cell: ({ row }) => (
           <div className="flex gap-4">
             {isAuthenticated &&
-              ["receiptEntry", "receiptSupervisor"].includes(
+              ["administrator", "receiptEntry", "receiptSupervisor"].includes(
                 user.user.role
               ) && (
                 <button
@@ -117,7 +117,7 @@ const ReceiptList = () => {
               )}
 
             {isAuthenticated &&
-              ["receiptEntry", "receiptSupervisor"].includes(
+              ["administrator", "receiptEntry", "receiptSupervisor"].includes(
                 user.user.role
               ) && (
                 <button
@@ -129,7 +129,7 @@ const ReceiptList = () => {
               )}
 
             {isAuthenticated &&
-              !["receiptEntry", "receiptSupervisor"].includes(
+              !["administrator", "receiptEntry", "receiptSupervisor"].includes(
                 user.user.role
               ) && <p>No actions allowed.</p>}
           </div>
@@ -161,7 +161,9 @@ const ReceiptList = () => {
           // 4
           showAddButton={
             isAuthenticated &&
-            ["receiptEntry", "receiptSupervisor"].includes(user.user.role)
+            ["administrator", "receiptEntry", "receiptSupervisor"].includes(
+              user.user.role
+            )
           }
           handleAddButton={handleAddButton}
           addButtonLabel="Add Receipt"
